@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="hi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#6f1115" />
+    <meta name="description" content="Anmol Jewelers का लाइव jewellery catalogue और आज का सोने का भाव।" />
+    <title>Anmol Jewelers — Live Catalogue</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --maroon: #7c171c;
+        --maroon-dark: #531014;
+        --gold: #c6a04a;
+        --gold-pale: #f5edda;
+        --cream: #fffbf3;
+        --ink: #241a13;
+        --muted: #796d60;
+        --line: #e9deca;
+        --green: #18834c;
+      }
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-width: 320px;
+        background:
+          radial-gradient(ellipse at 50% -10%, rgba(198, 160, 74, .13), transparent 44rem),
+          var(--cream);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      button { font: inherit; }
+      .wrap { width: min(1120px, 100% - 32px); margin: 0 auto; }
+      .hero {
+        padding: 38px 20px 31px;
+        text-align: center;
+        color: #fff9ec;
+        background: linear-gradient(135deg, var(--maroon-dark), var(--maroon) 58%, #8c2725);
+        border-bottom: 4px solid var(--gold);
+        box-shadow: 0 12px 32px rgba(83, 16, 20, .13);
+      }
+      .ganesh { margin: 0 0 8px; color: #f0d58c; font-size: 13px; letter-spacing: .13em; }
+      .shop-name { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(30px, 6vw, 48px); font-weight: 600; letter-spacing: .015em; }
+      .address { margin: 10px 0 0; color: #f2e3c9; font-size: 14px; }
+      .live-pill {
+        display: inline-flex; align-items: center; gap: 8px;
+        margin-top: 18px; padding: 7px 12px;
+        border: 1px solid rgba(255, 239, 203, .42); border-radius: 999px;
+        color: #fff5dc; font-size: 11px; font-weight: 800; letter-spacing: .12em;
+      }
+      .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #ef5552; box-shadow: 0 0 0 4px rgba(239, 85, 82, .18); }
+      main { padding: 24px 0 44px; }
+      .rates {
+        padding: 19px; border: 1px solid #e7d8b8; border-radius: 18px;
+        background: linear-gradient(135deg, #fffdf8, var(--gold-pale));
+        box-shadow: 0 8px 22px rgba(87, 60, 24, .06);
+      }
+      .rates-heading { margin: 0 0 14px; text-align: center; color: var(--maroon); font-family: Georgia, "Times New Roman", serif; font-size: 19px; }
+      .rate-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+      .rate-cell { padding: 12px 8px; text-align: center; background: rgba(255,255,255,.72); border: 1px solid rgba(198,160,74,.28); border-radius: 12px; }
+      .rate-karat { display: block; margin-bottom: 4px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+      .rate-value { color: var(--maroon); font-size: clamp(14px, 2.6vw, 19px); font-weight: 800; }
+      .updated { margin: 13px 0 0; text-align: center; color: var(--muted); font-size: 11px; }
+      .section { margin-top: 30px; }
+      .section-title {
+        display: flex; align-items: center; gap: 12px;
+        margin: 0 0 15px; color: var(--maroon);
+        font-family: Georgia, "Times New Roman", serif; font-size: 23px;
+      }
+      .section-title::after { height: 1px; flex: 1; content: ""; background: var(--line); }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .card {
+        overflow: hidden; border: 1px solid var(--line); border-radius: 16px;
+        background: #fff; box-shadow: 0 7px 18px rgba(53, 38, 21, .055);
+      }
+      .photo, .no-photo { display: block; width: 100%; aspect-ratio: 1 / .82; object-fit: cover; background: #f4ecdf; }
+      .no-photo { display: grid; place-items: center; color: var(--gold); font-size: 48px; }
+      .card-body { padding: 13px 13px 14px; }
+      .item-name { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.3; }
+      .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
+      .badge { padding: 4px 8px; border-radius: 999px; background: #f7f0e2; color: var(--maroon); font-size: 10px; font-weight: 800; }
+      .weight { margin: 9px 0 0; color: var(--muted); font-size: 12px; }
+      .notes { margin: 8px 0 0; color: #61554a; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
+      .price { margin: 11px 0 0; color: var(--maroon); font-size: 19px; font-weight: 800; }
+      .approx { color: var(--muted); font-size: 10px; font-weight: 500; }
+      .ask {
+        display: flex; justify-content: center; align-items: center; gap: 8px;
+        width: 100%; min-height: 42px; margin-top: 12px; padding: 9px 12px;
+        border: 0; border-radius: 10px; background: #e9f7ef; color: #11683d;
+        font-size: 13px; font-weight: 800; cursor: pointer;
+      }
+      .ask:hover { background: #d8f0e2; }
+      .state {
+        margin: 32px auto; padding: 26px 20px; max-width: 500px;
+        border: 1px solid var(--line); border-radius: 16px; background: #fff;
+        text-align: center; color: var(--muted);
+      }
+      .state h2 { margin: 0 0 8px; color: var(--maroon); font-family: Georgia, "Times New Roman", serif; }
+      .state p { margin: 0; line-height: 1.6; font-size: 14px; }
+      .retry { margin-top: 15px; padding: 10px 16px; border: 0; border-radius: 9px; background: var(--maroon); color: white; font-weight: 700; cursor: pointer; }
+      .spinner { width: 26px; height: 26px; margin: 0 auto 13px; border: 3px solid #eadfc9; border-top-color: var(--maroon); border-radius: 50%; animation: spin .8s linear infinite; }
+      @keyframes spin { to { transform: rotate(360deg); } }
+      footer { padding: 20px 12px 28px; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 12px; line-height: 1.7; }
+      .footer-shop { color: var(--maroon); font-weight: 800; }
+      .footer-phone { color: var(--maroon); text-decoration: none; font-weight: 700; }
+      @media (min-width: 700px) {
+        .wrap { width: min(1120px, 100% - 56px); }
+        .hero { padding: 48px 24px 37px; }
+        .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+        .photo, .no-photo { aspect-ratio: 1 / .78; }
+        .card-body { padding: 16px; }
+      }
+      @media (max-width: 420px) {
+        .wrap { width: calc(100% - 22px); }
+        .rate-grid { gap: 6px; }
+        .rate-cell { padding: 10px 4px; }
+        .rates { padding: 15px 10px; }
+        .grid { gap: 9px; }
+        .card-body { padding: 11px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <p class="ganesh">श्री गणेशाय नमः</p>
+      <h1 class="shop-name" id="shop-name">Anmol Jewelers</h1>
+      <p class="address" id="shop-address" hidden></p>
+      <div class="live-pill"><span class="live-dot" aria-hidden="true"></span> LIVE CATALOGUE</div>
+    </header>
+    <main class="wrap">
+      <div id="catalogue" aria-live="polite">
+        <section class="state"><div class="spinner" aria-hidden="true"></div><p>Catalogue load ho raha hai…</p></section>
+      </div>
+    </main>
+    <footer>
+      <div class="footer-shop" id="footer-shop">Anmol Jewelers</div>
+      <div id="footer-phone"></div>
+      <div>Prices approximate hain — final price dukaan par confirm hogi.</div>
+    </footer>
+    <script>
+      (() => {
+        const root = document.getElementById('catalogue');
+        const shopNameNode = document.getElementById('shop-name');
+        const addressNode = document.getElementById('shop-address');
+        const footerShopNode = document.getElementById('footer-shop');
+        const footerPhoneNode = document.getElementById('footer-phone');
+
+        function element(tag, className, text) {
+          const node = document.createElement(tag);
+          if (className) node.className = className;
+          if (text !== undefined && text !== null) node.textContent = String(text);
+          return node;
+        }
+
+        function money(value) {
+          const amount = Number(value);
+          return Number.isFinite(amount) && amount > 0
+            ? `₹${Math.round(amount).toLocaleString('en-IN')}`
+            : '';
+        }
+
+        function weight(value) {
+          const amount = Number(value);
+          if (!Number.isFinite(amount) || amount <= 0) return '';
+          return `${amount.toLocaleString('en-IN', { maximumFractionDigits: 3 })}g`;
+        }
+
+        function dateLabel(value) {
+          if (!value) return '';
+          const parsed = new Date(value);
+          return Number.isNaN(parsed.getTime())
+            ? ''
+            : parsed.toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+        }
+
+        function phoneDigits(value) {
+          const digits = String(value || '').replace(/\D/g, '');
+          return digits.length === 10 ? `91${digits}` : digits;
+        }
+
+        function makeItemCard(item, catalog) {
+          const card = element('article', 'card');
+          const photos = Array.isArray(item.photoUrls) ? item.photoUrls : [];
+          const photoUrl = photos.find((url) => typeof url === 'string' && /^https:\/\//i.test(url));
+          if (photoUrl) {
+            const image = element('img', 'photo');
+            image.src = photoUrl;
+            image.alt = item.name ? String(item.name) : 'Jewellery item';
+            image.loading = 'lazy';
+            image.referrerPolicy = 'no-referrer';
+            image.onerror = () => image.replaceWith(element('div', 'no-photo', '✧'));
+            card.append(image);
+          } else {
+            card.append(element('div', 'no-photo', '✧'));
+          }
+
+          const body = element('div', 'card-body');
+          body.append(element('h3', 'item-name', item.name || 'Jewellery Item'));
+          const badges = element('div', 'badges');
+          if (item.purity) badges.append(element('span', 'badge', item.purity));
+          if (Number(item.wastagePercent) > 0) badges.append(element('span', 'badge', `${Number(item.wastagePercent)}% wastage`));
+          if (Number(item.makingChargePercent) > 0) badges.append(element('span', 'badge', `${Number(item.makingChargePercent)}% making`));
+          if (badges.childNodes.length) body.append(badges);
+
+          const weights = [];
+          const gross = weight(item.grossWeight);
+          const net = weight(item.netWeight);
+          if (gross) weights.push(`Gross ${gross}`);
+          if (net) weights.push(`Net ${net}`);
+          if (weights.length) body.append(element('p', 'weight', weights.join('  •  ')));
+          if (item.notes) body.append(element('p', 'notes', item.notes));
+
+          const price = money(item.approxPrice);
+          if (price) {
+            const priceLine = element('p', 'price');
+            priceLine.append(document.createTextNode(price + ' '));
+            priceLine.append(element('span', 'approx', '* approx.'));
+            body.append(priceLine);
+          }
+
+          const ask = element('button', 'ask', 'WhatsApp par poochhen');
+          ask.type = 'button';
+          ask.addEventListener('click', () => {
+            const message = `Namaste! *${catalog.shopName || 'Anmol Jewelers'}* — mujhe "${item.name || 'jewellery item'}" ke baare me jaankari chahiye. (Live catalogue se)`;
+            const phone = phoneDigits(catalog.phone);
+            const url = phone
+              ? `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
+              : `https://wa.me/?text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank', 'noopener,noreferrer');
+          });
+          body.append(ask);
+          card.append(body);
+          return card;
+        }
+
+        function render(data) {
+          const name = data.shopName || 'Anmol Jewelers';
+          shopNameNode.textContent = name;
+          footerShopNode.textContent = name;
+
+          const address = [data.address, data.city].filter(Boolean).join(', ');
+          addressNode.textContent = address;
+          addressNode.hidden = !address;
+
+          footerPhoneNode.replaceChildren();
+          if (data.phone) {
+            const phone = element('a', 'footer-phone', data.phone);
+            phone.href = `tel:${String(data.phone).replace(/[^\d+]/g, '')}`;
+            footerPhoneNode.append(phone);
+          }
+
+          root.replaceChildren();
+          const rates = data.metalRates || {};
+          const rateOptions = [
+            ['24K', rates.goldRate999],
+            ['22K', rates.goldRate],
+            ['20K', rates.gold20k],
+            ['18K', rates.gold18k],
+          ].filter(([, amount]) => Number(amount) > 0);
+
+          const rateSection = element('section', 'rates');
+          rateSection.append(element('h2', 'rates-heading', 'Aaj ka bhav · per gram'));
+          if (rateOptions.length) {
+            const rateGrid = element('div', 'rate-grid');
+            rateOptions.forEach(([karat, amount]) => {
+              const cell = element('div', 'rate-cell');
+              cell.append(element('span', 'rate-karat', karat));
+              cell.append(element('span', 'rate-value', money(amount)));
+              rateGrid.append(cell);
+            });
+            rateSection.append(rateGrid);
+          } else {
+            rateSection.append(element('p', 'updated', 'Aaj ke rates abhi available nahi hain.'));
+          }
+          const updated = dateLabel(data.updatedAt);
+          if (updated) rateSection.append(element('p', 'updated', `Aakhri update: ${updated}`));
+          root.append(rateSection);
+
+          const items = Array.isArray(data.items) ? data.items : [];
+          const categories = Array.isArray(data.categories) ? data.categories : [];
+          const groups = new Map();
+          categories.forEach((category) => {
+            if (category && category.id && category.name) groups.set(String(category.id), { name: category.name, items: [] });
+          });
+          const uncategorized = [];
+          items.forEach((item) => {
+            const group = groups.get(String(item.categoryId || ''));
+            if (group && item.categoryId !== 'all') group.items.push(item);
+            else uncategorized.push(item);
+          });
+          const visibleGroups = [...groups.values()].filter((group) => group.items.length);
+          if (uncategorized.length) visibleGroups.push({ name: 'Catalogue', items: uncategorized });
+
+          if (!items.length) {
+            const empty = element('section', 'state');
+            empty.append(element('h2', '', 'Catalogue update ho raha hai'));
+            empty.append(element('p', '', 'Is waqt dikhane ke liye koi item nahi hai. Kripya baad me dobara dekhein.'));
+            root.append(empty);
+            return;
+          }
+
+          visibleGroups.forEach((group) => {
+            const section = element('section', 'section');
+            section.append(element('h2', 'section-title', group.name));
+            const grid = element('div', 'grid');
+            group.items.forEach((item) => grid.append(makeItemCard(item, data)));
+            section.append(grid);
+            root.append(section);
+          });
+        }
+
+        async function load() {
+          root.replaceChildren();
+          const loading = element('section', 'state');
+          loading.append(element('div', 'spinner'));
+          loading.append(element('p', '', 'Catalogue load ho raha hai…'));
+          root.append(loading);
+          try {
+            const response = await fetch(`/api/live-catalog?t=${Date.now()}`, { cache: 'no-store' });
+            const data = await response.json().catch(() => ({}));
+            if (!response.ok) throw new Error(data.error || 'Catalogue load nahi hua. Internet check karein.');
+            render(data);
+          } catch (error) {
+            const state = element('section', 'state');
+            state.append(element('h2', '', 'Catalogue nahi khul paya'));
+            state.append(element('p', '', error && error.message ? error.message : 'Internet check karke phir try karein.'));
+            const retry = element('button', 'retry', 'Dobara try karein');
+            retry.type = 'button';
+            retry.addEventListener('click', load);
+            state.append(retry);
+            root.replaceChildren(state);
+          }
+        }
+
+        load();
+      })();
+    </script>
+  </body>
+</html>
