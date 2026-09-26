@@ -1,339 +1,591 @@
 <!doctype html>
-<html lang="hi">
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#6f1115" />
-    <meta name="description" content="Anmol Jewelers का लाइव jewellery catalogue और आज का सोने का भाव।" />
-    <title>Anmol Jewelers — Live Catalogue</title>
+    <title>Anmol Jewelers — Pure White Catalogue</title>
+    <meta
+      name="description"
+      content="Explore the Anmol Jewelers jewellery catalogue, today’s rates and the old gold value calculator."
+    />
+    <meta name="theme-color" content="#f8fbfa" />
+    <meta property="og:title" content="Anmol Jewelers — Pure White Catalogue" />
+    <meta
+      property="og:description"
+      content="Explore every detail before you visit us."
+    />
+    <meta property="og:type" content="website" />
     <style>
       :root {
-        color-scheme: light;
-        --maroon: #7c171c;
-        --maroon-dark: #531014;
-        --gold: #c6a04a;
-        --gold-pale: #f5edda;
-        --cream: #fffbf3;
-        --ink: #241a13;
-        --muted: #796d60;
-        --line: #e9deca;
-        --green: #18834c;
+        --background: #fbfdfc;
+        --card: #ffffff;
+        --ink: #20312e;
+        --muted: #71817d;
+        --primary: #2b5b52;
+        --primary-strong: #1e4b43;
+        --primary-foreground: #ffffff;
+        --mint: #e8f3ef;
+        --mint-deep: #dcece6;
+        --gold: #c4a15a;
+        --border: #d9e5e0;
+        --whatsapp: #25d366;
+        --shadow: 0 14px 34px rgba(43, 91, 82, 0.08);
       }
 
       * { box-sizing: border-box; }
+      html { background: var(--background); }
       body {
         margin: 0;
-        min-width: 320px;
-        background:
-          radial-gradient(ellipse at 50% -10%, rgba(198, 160, 74, .13), transparent 44rem),
-          var(--cream);
         color: var(--ink);
+        background:
+          radial-gradient(circle at 50% 0, rgba(232, 243, 239, 0.7), transparent 34rem),
+          var(--background);
         font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       }
-      button { font: inherit; }
-      .wrap { width: min(1120px, 100% - 32px); margin: 0 auto; }
+      button, input { font: inherit; }
+      button { cursor: pointer; }
+      .page { max-width: 1080px; margin: 0 auto; padding-bottom: 48px; }
+      .topbar {
+        min-height: 78px;
+        padding: 22px 24px 14px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .brand { display: flex; align-items: center; min-width: 0; }
+      .brand-mark {
+        width: 50px; height: 34px; margin-right: 10px; border: 1px solid var(--gold);
+        color: var(--primary); display: grid; place-items: center; font-family: Georgia, serif;
+        font-size: 17px; letter-spacing: 1px;
+      }
+      .shop-name { font-size: 19px; letter-spacing: 1.3px; font-weight: 650; white-space: nowrap; }
+      .tagline { margin-top: 3px; color: var(--muted); font-size: 10px; letter-spacing: .3px; }
+      .top-actions { display: flex; gap: 8px; }
+      .icon-button {
+        width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 50%;
+        color: var(--primary); background: var(--card); display: grid; place-items: center;
+      }
       .hero {
-        padding: 38px 20px 31px;
-        text-align: center;
-        color: #fff9ec;
-        background: linear-gradient(135deg, var(--maroon-dark), var(--maroon) 58%, #8c2725);
-        border-bottom: 4px solid var(--gold);
-        box-shadow: 0 12px 32px rgba(83, 16, 20, .13);
+        min-height: 150px; margin: 16px; padding: 22px 20px; border-radius: 22px;
+        background: var(--mint); display: flex; align-items: center; justify-content: space-between;
+        gap: 20px;
       }
-      .ganesh { margin: 0 0 8px; color: #f0d58c; font-size: 13px; letter-spacing: .13em; }
-      .shop-name { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: clamp(30px, 6vw, 48px); font-weight: 600; letter-spacing: .015em; }
-      .address { margin: 10px 0 0; color: #f2e3c9; font-size: 14px; }
-      .live-pill {
-        display: inline-flex; align-items: center; gap: 8px;
-        margin-top: 18px; padding: 7px 12px;
-        border: 1px solid rgba(255, 239, 203, .42); border-radius: 999px;
-        color: #fff5dc; font-size: 11px; font-weight: 800; letter-spacing: .12em;
+      .eyebrow, .section-label {
+        color: var(--primary); font-size: 10px; font-weight: 750; letter-spacing: 2px;
       }
-      .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #ef5552; box-shadow: 0 0 0 4px rgba(239, 85, 82, .18); }
-      main { padding: 24px 0 44px; }
-      .rates {
-        padding: 19px; border: 1px solid #e7d8b8; border-radius: 18px;
-        background: linear-gradient(135deg, #fffdf8, var(--gold-pale));
-        box-shadow: 0 8px 22px rgba(87, 60, 24, .06);
+      h1 { margin: 7px 0 0; font-size: clamp(24px, 4vw, 34px); line-height: 1.05; }
+      .hero-sub { margin: 8px 0 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+      .hero-badge {
+        width: 88px; height: 88px; flex: 0 0 88px; border-radius: 50%; background: var(--background);
+        display: grid; place-items: center; text-align: center; color: var(--primary);
+        font-size: 11px; font-weight: 650; line-height: 1.35;
       }
-      .rates-heading { margin: 0 0 14px; text-align: center; color: var(--maroon); font-family: Georgia, "Times New Roman", serif; font-size: 19px; }
-      .rate-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-      .rate-cell { padding: 12px 8px; text-align: center; background: rgba(255,255,255,.72); border: 1px solid rgba(198,160,74,.28); border-radius: 12px; }
-      .rate-karat { display: block; margin-bottom: 4px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .08em; }
-      .rate-value { color: var(--maroon); font-size: clamp(14px, 2.6vw, 19px); font-weight: 800; }
-      .updated { margin: 13px 0 0; text-align: center; color: var(--muted); font-size: 11px; }
-      .section { margin-top: 30px; }
-      .section-title {
-        display: flex; align-items: center; gap: 12px;
-        margin: 0 0 15px; color: var(--maroon);
-        font-family: Georgia, "Times New Roman", serif; font-size: 23px;
+      .banner-row { display: flex; gap: 10px; padding: 0 16px 2px; overflow-x: auto; }
+      .banner {
+        min-width: 292px; min-height: 106px; border: 1px solid var(--border); border-radius: 17px;
+        background: var(--card); display: flex; overflow: hidden;
       }
-      .section-title::after { height: 1px; flex: 1; content: ""; background: var(--line); }
-      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .banner-art { width: 100px; background: var(--mint-deep); display: grid; place-items: center; color: var(--gold); font-size: 32px; }
+      .banner-copy { padding: 15px 12px; display: flex; flex-direction: column; justify-content: center; }
+      .banner-copy strong { font-size: 14px; }
+      .banner-copy span { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.45; }
+      .banner-copy b { margin-top: 6px; color: var(--primary); font-size: 11px; }
+      .category-row { display: flex; flex-wrap: wrap; gap: 8px; padding: 16px 16px 0; }
+      .pill {
+        min-height: 36px; padding: 0 16px; border: 1px solid var(--border); border-radius: 18px;
+        background: var(--card); color: var(--muted); display: inline-flex; align-items: center;
+        font-size: 12px; font-weight: 650;
+      }
+      .pill.active { border-color: var(--primary); background: var(--primary); color: white; }
+      .section-heading { display: flex; align-items: flex-end; justify-content: space-between; padding: 25px 18px 13px; }
+      .section-heading h2 { margin: 0; font-size: 22px; }
+      .section-heading p { margin: 5px 0 0; color: var(--muted); font-size: 12px; }
+      .section-accent { color: var(--primary); font-size: 13px; font-weight: 650; letter-spacing: 1px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 0 12px; }
       .card {
-        overflow: hidden; border: 1px solid var(--line); border-radius: 16px;
-        background: #fff; box-shadow: 0 7px 18px rgba(53, 38, 21, .055);
+        position: relative; border: 1px solid var(--border); border-radius: 15px; overflow: hidden;
+        background: var(--card); box-shadow: 0 4px 14px rgba(43, 91, 82, .03);
       }
-      .photo, .no-photo { display: block; width: 100%; aspect-ratio: 1 / .82; object-fit: cover; background: #f4ecdf; }
-      .no-photo { display: grid; place-items: center; color: var(--gold); font-size: 48px; }
-      .card-body { padding: 13px 13px 14px; }
-      .item-name { margin: 0; font-family: Georgia, "Times New Roman", serif; font-size: 17px; line-height: 1.3; }
-      .badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 9px; }
-      .badge { padding: 4px 8px; border-radius: 999px; background: #f7f0e2; color: var(--maroon); font-size: 10px; font-weight: 800; }
-      .weight { margin: 9px 0 0; color: var(--muted); font-size: 12px; }
-      .notes { margin: 8px 0 0; color: #61554a; font-size: 12px; line-height: 1.5; overflow-wrap: anywhere; }
-      .price { margin: 11px 0 0; color: var(--maroon); font-size: 19px; font-weight: 800; }
-      .approx { color: var(--muted); font-size: 10px; font-weight: 500; }
+      .image-frame { height: 196px; position: relative; background: var(--mint); display: grid; place-items: center; }
+      .photo { width: 100%; height: 100%; object-fit: contain; display: block; }
+      .no-photo { color: var(--gold); font-family: Georgia, serif; font-size: 48px; }
+      .heart {
+        position: absolute; z-index: 1; top: 10px; left: 10px; width: 32px; height: 32px;
+        border: 0; border-radius: 50%; background: var(--background); color: var(--gold); box-shadow: var(--shadow);
+      }
+      .heart.favorited { color: var(--primary); }
+      .express {
+        position: absolute; bottom: 9px; left: 9px; padding: 5px 9px; border-radius: 12px;
+        color: #fff; background: var(--primary); font-size: 10px; font-weight: 650;
+      }
+      .card-body { padding: 12px; }
+      .item-category { color: var(--primary); font-size: 10px; text-transform: uppercase; letter-spacing: .7px; font-weight: 650; }
+      .item-name { min-height: 38px; margin: 4px 0 0; font-size: 14px; line-height: 1.35; font-weight: 550; }
+      .item-meta { margin: 6px 0 0; color: var(--muted); font-size: 11px; }
+      .item-price { margin: 8px 0 0; font-size: 17px; font-weight: 750; }
+      .item-price small { color: var(--muted); font-size: 10px; font-weight: 500; }
       .ask {
-        display: flex; justify-content: center; align-items: center; gap: 8px;
-        width: 100%; min-height: 42px; margin-top: 12px; padding: 9px 12px;
-        border: 0; border-radius: 10px; background: #e9f7ef; color: #11683d;
-        font-size: 13px; font-weight: 800; cursor: pointer;
+        width: 100%; margin-top: 10px; padding: 9px 8px; border: 0; border-radius: 12px;
+        background: var(--whatsapp); color: #fff; font-size: 12px; font-weight: 700;
       }
-      .ask:hover { background: #d8f0e2; }
-      .state {
-        margin: 32px auto; padding: 26px 20px; max-width: 500px;
-        border: 1px solid var(--line); border-radius: 16px; background: #fff;
-        text-align: center; color: var(--muted);
+      .empty {
+        margin: 18px; padding: 26px; border-radius: 18px; background: var(--mint); text-align: center;
       }
-      .state h2 { margin: 0 0 8px; color: var(--maroon); font-family: Georgia, "Times New Roman", serif; }
-      .state p { margin: 0; line-height: 1.6; font-size: 14px; }
-      .retry { margin-top: 15px; padding: 10px 16px; border: 0; border-radius: 9px; background: var(--maroon); color: white; font-weight: 700; cursor: pointer; }
-      .spinner { width: 26px; height: 26px; margin: 0 auto 13px; border: 3px solid #eadfc9; border-top-color: var(--maroon); border-radius: 50%; animation: spin .8s linear infinite; }
-      @keyframes spin { to { transform: rotate(360deg); } }
-      footer { padding: 20px 12px 28px; border-top: 1px solid var(--line); text-align: center; color: var(--muted); font-size: 12px; line-height: 1.7; }
-      .footer-shop { color: var(--maroon); font-weight: 800; }
-      .footer-phone { color: var(--maroon); text-decoration: none; font-weight: 700; }
-      @media (min-width: 700px) {
-        .wrap { width: min(1120px, 100% - 56px); }
-        .hero { padding: 48px 24px 37px; }
-        .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-        .photo, .no-photo { aspect-ratio: 1 / .78; }
-        .card-body { padding: 16px; }
+      .empty-mark { color: var(--gold); font-size: 30px; }
+      .empty h3 { margin: 10px 0 0; font-size: 17px; }
+      .empty p { margin: 5px 0 0; color: var(--muted); font-size: 12px; line-height: 1.5; }
+      .old-gold {
+        margin: 24px 16px 0; border: 1px solid var(--border); border-radius: 22px; overflow: hidden;
+        background: var(--card); box-shadow: var(--shadow);
       }
-      @media (max-width: 420px) {
-        .wrap { width: calc(100% - 22px); }
-        .rate-grid { gap: 6px; }
-        .rate-cell { padding: 10px 4px; }
-        .rates { padding: 15px 10px; }
-        .grid { gap: 9px; }
-        .card-body { padding: 11px; }
+      .old-header { padding: 15px 17px; background: var(--mint); display: flex; align-items: center; gap: 11px; }
+      .calc-icon {
+        width: 42px; height: 42px; border-radius: 50%; background: var(--background); color: var(--primary);
+        display: grid; place-items: center; font-size: 21px;
+      }
+      .old-header h2 { margin: 0; font-size: 20px; }
+      .old-header p { margin: 3px 0 0; color: var(--muted); font-size: 11px; }
+      .old-body { padding: 16px; }
+      .field-label { display: block; margin-top: 2px; color: var(--muted); font-size: 10px; font-weight: 750; letter-spacing: 1.1px; }
+      .purity-row { display: flex; gap: 8px; padding: 11px 0; overflow-x: auto; }
+      .purity {
+        min-height: 38px; padding: 0 13px; white-space: nowrap; border: 1px solid var(--border);
+        border-radius: 19px; background: var(--card); color: var(--ink); font-size: 12px; font-weight: 650;
+      }
+      .purity.active { border-color: var(--primary); background: var(--primary); color: #fff; }
+      .rate-row, .estimate {
+        min-height: 58px; margin-top: 9px; padding: 10px 14px; border-radius: 15px;
+        display: flex; align-items: center; justify-content: space-between; gap: 15px;
+      }
+      .rate-row { background: var(--mint); }
+      .rate-row.out { border: 1px solid var(--border); background: var(--card); }
+      .rate-label { color: var(--muted); font-size: 11px; font-weight: 650; }
+      .rate-note { margin-top: 4px; color: var(--muted); font-size: 10px; }
+      .rate-value { font-size: 17px; font-weight: 750; white-space: nowrap; }
+      .rate-value.green { color: var(--primary); }
+      .weight-input {
+        width: 100%; height: 48px; margin-top: 9px; padding: 0 14px; border: 1px solid var(--border);
+        border-radius: 13px; color: var(--ink); background: var(--card); outline: none; font-size: 14px;
+      }
+      .weight-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(43, 91, 82, .1); }
+      .estimate { background: var(--mint); }
+      .estimate-label { color: var(--muted); font-size: 12px; }
+      .estimate-value { font-size: 19px; font-weight: 750; }
+      .whatsapp {
+        width: 100%; margin-top: 14px; padding: 14px; border: 0; border-radius: 14px;
+        background: var(--primary); color: #fff; font-size: 13px; font-weight: 750;
+      }
+      .disclaimer { margin: 10px 0 0; color: var(--muted); text-align: center; font-size: 10px; line-height: 1.5; }
+      .quality { margin-top: 28px; padding: 24px 20px; border-top: 1px solid var(--border); text-align: center; }
+      .quality .seal {
+        width: 80px; height: 64px; margin: 12px auto 0; border: 1px solid var(--gold); border-radius: 50%;
+        display: grid; place-items: center; color: var(--primary); font-family: Georgia, serif; font-size: 18px;
+      }
+      .quality h3 { margin: 4px 0 0; font-size: 16px; }
+      .quality p { margin: 4px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+      footer { margin: 28px 18px 0; padding-top: 22px; border-top: 1px solid var(--border); text-align: center; }
+      footer h2 { margin: 0; font-size: 18px; letter-spacing: 1px; }
+      footer p { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
+      .footer-actions { display: flex; justify-content: center; gap: 10px; margin-top: 16px; }
+      .footer-actions button { min-width: 122px; padding: 9px 15px; border-radius: 19px; font-size: 12px; font-weight: 650; }
+      .footer-wa { border: 1px solid var(--whatsapp); background: var(--whatsapp); color: white; }
+      .footer-ig { border: 1px solid var(--border); background: var(--card); color: var(--primary); }
+      .modal {
+        position: fixed; inset: 0; z-index: 5; padding: 5vh 16px 0; background: rgba(43, 73, 67, .18);
+        display: none; justify-content: center; align-items: flex-end;
+      }
+      .modal.open { display: flex; }
+      .modal-sheet {
+        width: min(680px, 100%); max-height: 91vh; overflow: auto; padding: 18px; border-radius: 26px 26px 0 0;
+        background: var(--background);
+      }
+      .handle { width: 42px; height: 4px; margin: 0 auto 14px; border-radius: 2px; background: #c7d8d3; }
+      .detail-image { height: 250px; border-radius: 20px; background: var(--mint); display: grid; place-items: center; overflow: hidden; }
+      .detail-image img { width: 100%; height: 100%; object-fit: contain; }
+      .detail-category { margin-top: 18px; color: var(--primary); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 650; }
+      .detail-title { margin: 5px 0 0; font-size: 24px; }
+      .detail-value { margin: 8px 0 0; font-size: 22px; font-weight: 750; }
+      .close { width: 100%; margin-top: 8px; padding: 13px; border: 0; background: transparent; color: var(--muted); }
+      .status { margin: 0 18px; color: var(--muted); font-size: 12px; text-align: center; }
+      @media (min-width: 720px) {
+        .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .hero { margin-left: 24px; margin-right: 24px; }
+      }
+      @media (max-width: 480px) {
+        .topbar { padding-left: 16px; padding-right: 16px; }
+        .shop-name { font-size: 16px; }
+        .hero-badge { width: 76px; height: 76px; flex-basis: 76px; font-size: 10px; }
       }
     </style>
   </head>
   <body>
-    <header class="hero">
-      <p class="ganesh">श्री गणेशाय नमः</p>
-      <h1 class="shop-name" id="shop-name">Anmol Jewelers</h1>
-      <p class="address" id="shop-address" hidden></p>
-      <div class="live-pill"><span class="live-dot" aria-hidden="true"></span> LIVE CATALOGUE</div>
-    </header>
-    <main class="wrap">
-      <div id="catalogue" aria-live="polite">
-        <section class="state"><div class="spinner" aria-hidden="true"></div><p>Catalogue load ho raha hai…</p></section>
-      </div>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-label="Anmol Jewelers">AJ</div>
+          <div>
+            <div class="shop-name" id="shop-name">Anmol Jewelers</div>
+            <div class="tagline">Fine jewellery · thoughtfully chosen</div>
+          </div>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" type="button" id="share-button" aria-label="Share catalogue">↗</button>
+          <button class="icon-button" type="button" id="instagram-button" aria-label="Open Instagram" hidden>◎</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div>
+          <div class="eyebrow">ANMOL JEWELERS</div>
+          <h1>Pure white catalogue</h1>
+          <p class="hero-sub">Explore every detail before you visit us.</p>
+        </div>
+        <div class="hero-badge">✦<br />Curated<br />collection</div>
+      </section>
+
+      <div id="banners" class="banner-row" hidden></div>
+      <nav id="categories" class="category-row" aria-label="Catalogue categories"></nav>
+
+      <section>
+        <div class="section-heading">
+          <div>
+            <h2>Our collection</h2>
+            <p id="collection-count">0 designs · Pure white catalogue</p>
+          </div>
+          <div class="section-accent">Anmol</div>
+        </div>
+        <div id="products" class="grid"></div>
+        <div id="empty" class="empty" hidden>
+          <div class="empty-mark">✦</div>
+          <h3>New designs coming soon</h3>
+          <p>Catalogue update होते ही यहाँ आपके jewellery designs दिखेंगे.</p>
+        </div>
+        <p id="status" class="status">Catalogue load हो रहा है…</p>
+      </section>
+
+      <section class="old-gold">
+        <div class="old-header">
+          <div class="calc-icon">⌘</div>
+          <div>
+            <h2>Sell Old Gold</h2>
+            <p>Instant estimate · transparent rate</p>
+          </div>
+        </div>
+        <div class="old-body">
+          <label class="field-label">SELECT PURITY</label>
+          <div id="purities" class="purity-row"></div>
+          <div class="rate-row">
+            <div>
+              <div class="rate-label" id="current-rate-label">Current 22K • 916 rate</div>
+              <div class="rate-note" id="deduction-note">Less 2% for old gold</div>
+            </div>
+            <div class="rate-value" id="current-rate">₹0/g</div>
+          </div>
+          <div class="rate-row out">
+            <div>
+              <div class="rate-label">Your old gold rate</div>
+              <div class="rate-note" id="payable-purity">Payable purity ≈ 89.8%</div>
+            </div>
+            <div class="rate-value green" id="old-rate">₹0/g</div>
+          </div>
+          <label class="field-label" for="weight" style="margin-top:16px">NET WEIGHT (GRAMS)</label>
+          <input id="weight" class="weight-input" inputmode="decimal" placeholder="Enter weight in grams" />
+          <div class="estimate" id="estimate" hidden>
+            <span class="estimate-label">Estimated value</span>
+            <span class="estimate-value" id="estimate-value">₹0</span>
+          </div>
+          <button class="whatsapp" type="button" id="old-gold-button">◉ &nbsp; Get best price on WhatsApp</button>
+          <p class="disclaimer">Final value subject to physical verification at store</p>
+        </div>
+      </section>
+
+      <section class="quality">
+        <div class="section-label">CERTIFIED QUALITY</div>
+        <div class="seal">BIS</div>
+        <h3>BIS Hallmark Certified</h3>
+        <p>All jewellery certified by<br />Bureau of Indian Standards</p>
+      </section>
+
+      <footer>
+        <h2 id="footer-name">Anmol Jewelers</h2>
+        <p id="footer-address"></p>
+        <p id="footer-phone"></p>
+        <div class="footer-actions">
+          <button class="footer-wa" type="button" id="footer-wa">◉ &nbsp; WhatsApp</button>
+          <button class="footer-ig" type="button" id="footer-ig" hidden>◎ &nbsp; Instagram</button>
+        </div>
+      </footer>
     </main>
-    <footer>
-      <div class="footer-shop" id="footer-shop">Anmol Jewelers</div>
-      <div id="footer-phone"></div>
-      <div>Prices approximate hain — final price dukaan par confirm hogi.</div>
-    </footer>
+
+    <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Product details">
+      <div class="modal-sheet">
+        <div class="handle"></div>
+        <div class="detail-image" id="detail-image"></div>
+        <div class="detail-category" id="detail-category"></div>
+        <h2 class="detail-title" id="detail-title"></h2>
+        <div class="detail-value" id="detail-value"></div>
+        <button class="ask" type="button" id="detail-wa">◉ &nbsp; Enquire on WhatsApp</button>
+        <button class="close" type="button" id="close-modal">Close</button>
+      </div>
+    </div>
+
     <script>
       (() => {
-        const root = document.getElementById('catalogue');
-        const shopNameNode = document.getElementById('shop-name');
-        const addressNode = document.getElementById('shop-address');
-        const footerShopNode = document.getElementById('footer-shop');
-        const footerPhoneNode = document.getElementById('footer-phone');
-
-        function element(tag, className, text) {
-          const node = document.createElement(tag);
-          if (className) node.className = className;
-          if (text !== undefined && text !== null) node.textContent = String(text);
-          return node;
-        }
-
-        function money(value) {
-          const amount = Number(value);
-          return Number.isFinite(amount) && amount > 0
-            ? `₹${Math.round(amount).toLocaleString('en-IN')}`
-            : '';
-        }
-
-        function weight(value) {
-          const amount = Number(value);
-          if (!Number.isFinite(amount) || amount <= 0) return '';
-          return `${amount.toLocaleString('en-IN', { maximumFractionDigits: 3 })}g`;
-        }
-
-        function dateLabel(value) {
-          if (!value) return '';
-          const parsed = new Date(value);
-          return Number.isNaN(parsed.getTime())
-            ? ''
-            : parsed.toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
-        }
-
-        function phoneDigits(value) {
+        const API_URL = '/api/live-catalog';
+        const fallbackCatalog = {
+          shopName: 'Anmol Jewelers',
+          categories: [],
+          items: [],
+          metalRates: {},
+        };
+        let catalog = fallbackCatalog;
+        let activePurity = '22K • 916';
+        let selectedItem = null;
+        const favorites = new Set();
+        const purityOptions = [
+          { label: '22K • 916', purity: 916, key: 'goldRate' },
+          { label: '24K • 999', purity: 999, key: 'goldRate999' },
+          { label: '20K • 833', purity: 833, key: 'gold20k' },
+          { label: '18K • 750', purity: 750, key: 'gold18k' },
+          { label: '85% • 850', purity: 850, key: null },
+          { label: '75% • 750', purity: 750, key: 'gold18k' },
+        ];
+        const $ = (id) => document.getElementById(id);
+        const money = (value) => `₹${Math.round(Number(value) || 0).toLocaleString('en-IN')}`;
+        const weight = (value) => {
+          const number = Number(value);
+          return Number.isFinite(number) && number > 0 ? `${number.toFixed(2)}g` : '';
+        };
+        const escapeText = (value) => String(value ?? '');
+        const phoneDigits = (value) => {
           const digits = String(value || '').replace(/\D/g, '');
           return digits.length === 10 ? `91${digits}` : digits;
+        };
+        const openWhatsApp = (message) => {
+          const number = phoneDigits(catalog.phone || catalog.whatsappNumber);
+          const url = number
+            ? `https://wa.me/${number}?text=${encodeURIComponent(message)}`
+            : `https://wa.me/?text=${encodeURIComponent(message)}`;
+          window.open(url, '_blank', 'noopener,noreferrer');
+        };
+        const itemPhotos = (item) => Array.isArray(item.photoUrls) ? item.photoUrls : [];
+        const categoryName = (item) => {
+          const category = (catalog.categories || []).find((entry) => entry.id === item.categoryId);
+          return category?.name || 'Jewellery';
+        };
+        const calculateItemValue = (item) => {
+          const rate = Number(item.manualRate || item.ratePerGram || 0);
+          const net = Number(item.netWeight ?? item.weight ?? 0);
+          const base = net * rate;
+          return Math.round(base + base * (Number(item.wastagePercent || 0) / 100) + base * (Number(item.makingChargePercent || 0) / 100));
+        };
+
+        function renderHeader() {
+          const name = catalog.shopName || 'Anmol Jewelers';
+          $('shop-name').textContent = name;
+          $('footer-name').textContent = name;
+          $('footer-address').textContent = [catalog.address, catalog.city, catalog.pincode].filter(Boolean).join(', ');
+          $('footer-phone').textContent = catalog.phone || catalog.whatsappNumber || '';
+          const instagram = catalog.instagramUrl;
+          $('instagram-button').hidden = !instagram;
+          $('footer-ig').hidden = !instagram;
+          if (instagram) {
+            $('instagram-button').onclick = () => window.open(instagram, '_blank', 'noopener,noreferrer');
+            $('footer-ig').onclick = () => window.open(instagram, '_blank', 'noopener,noreferrer');
+          }
         }
 
-        function makeItemCard(item, catalog) {
-          const card = element('article', 'card');
-          const photos = Array.isArray(item.photoUrls) ? item.photoUrls : [];
-          const photoUrl = photos.find((url) => typeof url === 'string' && /^https:\/\//i.test(url));
-          if (photoUrl) {
-            const image = element('img', 'photo');
-            image.src = photoUrl;
-            image.alt = item.name ? String(item.name) : 'Jewellery item';
-            image.loading = 'lazy';
-            image.referrerPolicy = 'no-referrer';
-            image.onerror = () => image.replaceWith(element('div', 'no-photo', '✧'));
-            card.append(image);
-          } else {
-            card.append(element('div', 'no-photo', '✧'));
-          }
-
-          const body = element('div', 'card-body');
-          body.append(element('h3', 'item-name', item.name || 'Jewellery Item'));
-          const badges = element('div', 'badges');
-          if (item.purity) badges.append(element('span', 'badge', item.purity));
-          if (Number(item.wastagePercent) > 0) badges.append(element('span', 'badge', `${Number(item.wastagePercent)}% wastage`));
-          if (Number(item.makingChargePercent) > 0) badges.append(element('span', 'badge', `${Number(item.makingChargePercent)}% making`));
-          if (badges.childNodes.length) body.append(badges);
-
-          const weights = [];
-          const gross = weight(item.grossWeight);
-          const net = weight(item.netWeight);
-          if (gross) weights.push(`Gross ${gross}`);
-          if (net) weights.push(`Net ${net}`);
-          if (weights.length) body.append(element('p', 'weight', weights.join('  •  ')));
-          if (item.notes) body.append(element('p', 'notes', item.notes));
-
-          const price = money(item.approxPrice);
-          if (price) {
-            const priceLine = element('p', 'price');
-            priceLine.append(document.createTextNode(price + ' '));
-            priceLine.append(element('span', 'approx', '* approx.'));
-            body.append(priceLine);
-          }
-
-          const ask = element('button', 'ask', 'WhatsApp par poochhen');
-          ask.type = 'button';
-          ask.addEventListener('click', () => {
-            const message = `Namaste! *${catalog.shopName || 'Anmol Jewelers'}* — mujhe "${item.name || 'jewellery item'}" ke baare me jaankari chahiye. (Live catalogue se)`;
-            const phone = phoneDigits(catalog.phone);
-            const url = phone
-              ? `https://wa.me/${phone}?text=${encodeURIComponent(message)}`
-              : `https://wa.me/?text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank', 'noopener,noreferrer');
+        function renderBanners() {
+          const banners = (catalog.banners || []).filter((banner) => banner.active);
+          const node = $('banners');
+          node.replaceChildren();
+          node.hidden = !banners.length;
+          banners.forEach((banner) => {
+            const card = document.createElement('article');
+            card.className = 'banner';
+            const art = document.createElement('div');
+            art.className = 'banner-art';
+            art.textContent = '✦';
+            const copy = document.createElement('div');
+            copy.className = 'banner-copy';
+            copy.innerHTML = `<strong>${escapeText(banner.title)}</strong><span>${escapeText(banner.subtitle)}</span><b>${escapeText(banner.offerText)}</b>`;
+            card.append(art, copy);
+            node.append(card);
           });
-          body.append(ask);
-          card.append(body);
-          return card;
         }
 
-        function render(data) {
-          const name = data.shopName || 'Anmol Jewelers';
-          shopNameNode.textContent = name;
-          footerShopNode.textContent = name;
-
-          const address = [data.address, data.city].filter(Boolean).join(', ');
-          addressNode.textContent = address;
-          addressNode.hidden = !address;
-
-          footerPhoneNode.replaceChildren();
-          if (data.phone) {
-            const phone = element('a', 'footer-phone', data.phone);
-            phone.href = `tel:${String(data.phone).replace(/[^\d+]/g, '')}`;
-            footerPhoneNode.append(phone);
-          }
-
-          root.replaceChildren();
-          const rates = data.metalRates || {};
-          const rateOptions = [
-            ['24K', rates.goldRate999],
-            ['22K', rates.goldRate],
-            ['20K', rates.gold20k],
-            ['18K', rates.gold18k],
-          ].filter(([, amount]) => Number(amount) > 0);
-
-          const rateSection = element('section', 'rates');
-          rateSection.append(element('h2', 'rates-heading', 'Aaj ka bhav · per gram'));
-          if (rateOptions.length) {
-            const rateGrid = element('div', 'rate-grid');
-            rateOptions.forEach(([karat, amount]) => {
-              const cell = element('div', 'rate-cell');
-              cell.append(element('span', 'rate-karat', karat));
-              cell.append(element('span', 'rate-value', money(amount)));
-              rateGrid.append(cell);
-            });
-            rateSection.append(rateGrid);
-          } else {
-            rateSection.append(element('p', 'updated', 'Aaj ke rates abhi available nahi hain.'));
-          }
-          const updated = dateLabel(data.updatedAt);
-          if (updated) rateSection.append(element('p', 'updated', `Aakhri update: ${updated}`));
-          root.append(rateSection);
-
-          const items = Array.isArray(data.items) ? data.items : [];
-          const categories = Array.isArray(data.categories) ? data.categories : [];
-          const groups = new Map();
-          categories.forEach((category) => {
-            if (category && category.id && category.name) groups.set(String(category.id), { name: category.name, items: [] });
+        function renderCategories() {
+          const node = $('categories');
+          node.replaceChildren();
+          const all = document.createElement('button');
+          all.className = 'pill active';
+          all.textContent = 'All Jewellery';
+          all.type = 'button';
+          node.append(all);
+          (catalog.categories || []).slice(0, 3).forEach((category) => {
+            const pill = document.createElement('button');
+            pill.className = 'pill';
+            pill.textContent = category.name;
+            pill.type = 'button';
+            node.append(pill);
           });
-          const uncategorized = [];
+        }
+
+        function renderProducts() {
+          const node = $('products');
+          node.replaceChildren();
+          const items = Array.isArray(catalog.items) ? catalog.items : [];
+          $('collection-count').textContent = `${items.length} designs · Pure white catalogue`;
+          $('empty').hidden = items.length > 0;
           items.forEach((item) => {
-            const group = groups.get(String(item.categoryId || ''));
-            if (group && item.categoryId !== 'all') group.items.push(item);
-            else uncategorized.push(item);
-          });
-          const visibleGroups = [...groups.values()].filter((group) => group.items.length);
-          if (uncategorized.length) visibleGroups.push({ name: 'Catalogue', items: uncategorized });
-
-          if (!items.length) {
-            const empty = element('section', 'state');
-            empty.append(element('h2', '', 'Catalogue update ho raha hai'));
-            empty.append(element('p', '', 'Is waqt dikhane ke liye koi item nahi hai. Kripya baad me dobara dekhein.'));
-            root.append(empty);
-            return;
-          }
-
-          visibleGroups.forEach((group) => {
-            const section = element('section', 'section');
-            section.append(element('h2', 'section-title', group.name));
-            const grid = element('div', 'grid');
-            group.items.forEach((item) => grid.append(makeItemCard(item, data)));
-            section.append(grid);
-            root.append(section);
+            const card = document.createElement('article');
+            card.className = 'card';
+            const frame = document.createElement('div');
+            frame.className = 'image-frame';
+            const heart = document.createElement('button');
+            heart.className = `heart${favorites.has(item.id) ? ' favorited' : ''}`;
+            heart.type = 'button';
+            heart.setAttribute('aria-label', 'Favourite');
+            heart.textContent = favorites.has(item.id) ? '♥' : '♡';
+            heart.onclick = (event) => {
+              event.stopPropagation();
+              favorites.has(item.id) ? favorites.delete(item.id) : favorites.add(item.id);
+              renderProducts();
+            };
+            frame.append(heart);
+            const photos = itemPhotos(item);
+            if (photos[0]) {
+              const image = document.createElement('img');
+              image.className = 'photo';
+              image.src = photos[0];
+              image.alt = item.name || 'Jewellery item';
+              image.loading = 'lazy';
+              image.onerror = () => image.replaceWith(Object.assign(document.createElement('div'), { className: 'no-photo', textContent: '✧' }));
+              frame.append(image);
+            } else {
+              const placeholder = document.createElement('div');
+              placeholder.className = 'no-photo';
+              placeholder.textContent = '✧';
+              frame.append(placeholder);
+            }
+            const express = document.createElement('span');
+            express.className = 'express';
+            express.textContent = 'Express';
+            frame.append(express);
+            card.append(frame);
+            const body = document.createElement('div');
+            body.className = 'card-body';
+            body.innerHTML = `<div class="item-category">${escapeText(categoryName(item))}</div><div class="item-name">${escapeText(item.name || 'Jewellery item')}</div><div class="item-meta">${escapeText([weight(item.netWeight ?? item.weight), item.purity].filter(Boolean).join(' · '))}</div><div class="item-price">${money(item.approxPrice || calculateItemValue(item))}<small> approx.</small></div>`;
+            const ask = document.createElement('button');
+            ask.className = 'ask';
+            ask.type = 'button';
+            ask.textContent = '◉  WhatsApp par poochhen';
+            ask.onclick = (event) => {
+              event.stopPropagation();
+              openWhatsApp(`Namaste! *${catalog.shopName || 'Anmol Jewelers'}* — mujhe "${item.name || 'jewellery item'}" ke baare me jaankari chahiye. (Catalogue se)`);
+            };
+            body.append(ask);
+            card.append(body);
+            card.onclick = () => openDetail(item);
+            node.append(card);
           });
         }
 
-        async function load() {
-          root.replaceChildren();
-          const loading = element('section', 'state');
-          loading.append(element('div', 'spinner'));
-          loading.append(element('p', '', 'Catalogue load ho raha hai…'));
-          root.append(loading);
+        function getRate(option) {
+          const rates = catalog.metalRates || {};
+          return Number(rates[option.key] || 0) || Math.round((Number(rates.goldRate999) || 0) * option.purity / 999);
+        }
+
+        function renderCalculator() {
+          const rates = catalog.metalRates || {};
+          const deduction = Number(catalog.oldGoldDeductionPercent) || 2;
+          const option = purityOptions.find((entry) => entry.label === activePurity) || purityOptions[0];
+          const current = getRate(option);
+          const oldRate = Math.round(current * (1 - deduction / 100));
+          const received = Math.round(option.purity * (1 - deduction / 100));
+          $('purities').replaceChildren();
+          purityOptions.forEach((entry) => {
+            const button = document.createElement('button');
+            button.className = `purity${entry.label === activePurity ? ' active' : ''}`;
+            button.textContent = entry.label;
+            button.type = 'button';
+            button.onclick = () => {
+              activePurity = entry.label;
+              renderCalculator();
+            };
+            $('purities').append(button);
+          });
+          $('current-rate-label').textContent = `Current ${activePurity} rate`;
+          $('deduction-note').textContent = `Less ${deduction}% for old gold`;
+          $('current-rate').textContent = `${money(current)}/g`;
+          $('payable-purity').textContent = `Payable purity ≈ ${received / 10}%`;
+          $('old-rate').textContent = `${money(oldRate)}/g`;
+          updateEstimate(oldRate);
+          $('old-gold-button').onclick = () => {
+            const value = $('weight').value || 'To be confirmed';
+            const estimate = Number(value) > 0 ? money(Number(value) * oldRate) : 'To be confirmed';
+            openWhatsApp(`Hello ${catalog.shopName || 'Anmol Jewelers'}, I want to sell old gold.\nPurity: ${activePurity}\nNet weight: ${value} g\nOld gold rate: ${money(oldRate)}/g\nEstimated value: ${estimate}\n\nFinal value will be confirmed after physical verification.`);
+          };
+        }
+
+        function updateEstimate(oldRate) {
+          const value = Number($('weight').value) || 0;
+          $('estimate').hidden = value <= 0;
+          $('estimate-value').textContent = money(value * oldRate);
+        }
+
+        function openDetail(item) {
+          selectedItem = item;
+          const image = itemPhotos(item)[0];
+          $('detail-image').replaceChildren();
+          if (image) {
+            const node = document.createElement('img');
+            node.src = image;
+            node.alt = item.name || 'Jewellery item';
+            $('detail-image').append(node);
+          } else {
+            $('detail-image').textContent = '✧';
+          }
+          $('detail-category').textContent = categoryName(item);
+          $('detail-title').textContent = item.name || 'Jewellery item';
+          $('detail-value').textContent = money(item.approxPrice || calculateItemValue(item));
+          $('modal').classList.add('open');
+          $('detail-wa').onclick = () => openWhatsApp(`Namaste! I want details for ${item.name || 'this jewellery item'}.`);
+        }
+
+        async function loadCatalog() {
           try {
-            const response = await fetch(`/api/live-catalog?t=${Date.now()}`, { cache: 'no-store' });
-            const data = await response.json().catch(() => ({}));
-            if (!response.ok) throw new Error(data.error || 'Catalogue load nahi hua. Internet check karein.');
-            render(data);
+            const response = await fetch(`${API_URL}?t=${Date.now()}`, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Catalogue अभी publish नहीं हुआ है.');
+            const payload = await response.json();
+            catalog = payload.catalog || payload;
+            $('status').hidden = true;
           } catch (error) {
-            const state = element('section', 'state');
-            state.append(element('h2', '', 'Catalogue nahi khul paya'));
-            state.append(element('p', '', error && error.message ? error.message : 'Internet check karke phir try karein.'));
-            const retry = element('button', 'retry', 'Dobara try karein');
-            retry.type = 'button';
-            retry.addEventListener('click', load);
-            state.append(retry);
-            root.replaceChildren(state);
+            catalog = fallbackCatalog;
+            $('status').textContent = 'Catalogue update होते ही यहाँ आपके designs दिखेंगे.';
           }
+          renderHeader();
+          renderBanners();
+          renderCategories();
+          renderProducts();
+          renderCalculator();
         }
 
-        load();
+        $('weight').addEventListener('input', () => {
+          const option = purityOptions.find((entry) => entry.label === activePurity) || purityOptions[0];
+          updateEstimate(Math.round(getRate(option) * (1 - (Number(catalog.oldGoldDeductionPercent) || 2) / 100)));
+        });
+        $('share-button').onclick = () => {
+          const text = `${catalog.shopName || 'Anmol Jewelers'} catalogue\n${window.location.href}`;
+          if (navigator.share) navigator.share({ title: `${catalog.shopName || 'Anmol Jewelers'} Catalogue`, text });
+          else navigator.clipboard?.writeText(window.location.href);
+        };
+        $('footer-wa').onclick = () => openWhatsApp(`Hello ${catalog.shopName || 'Anmol Jewelers'}, I saw your jewellery catalogue.`);
+        $('close-modal').onclick = () => $('modal').classList.remove('open');
+        $('modal').onclick = (event) => { if (event.target === $('modal')) $('modal').classList.remove('open'); };
+        loadCatalog();
       })();
     </script>
   </body>
