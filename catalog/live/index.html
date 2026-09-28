@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Anmol Jewelers — Pure White Catalogue</title>
+    <title>Anmol Jewelers — Jewellery Catalogue</title>
     <meta
       name="description"
       content="Explore the Anmol Jewelers jewellery catalogue, today’s rates and the old gold value calculator."
     />
     <meta name="theme-color" content="#f8fbfa" />
-    <meta property="og:title" content="Anmol Jewelers — Pure White Catalogue" />
+    <meta property="og:title" content="Anmol Jewelers — Jewellery Catalogue" />
     <meta
       property="og:description"
       content="Explore every detail before you visit us."
@@ -28,7 +28,7 @@
         --mint-deep: #dcece6;
         --gold: #c4a15a;
         --border: #d9e5e0;
-        --whatsapp: #25d366;
+        --whatsapp: #2b5b52;
         --shadow: 0 14px 34px rgba(43, 91, 82, 0.08);
       }
 
@@ -56,17 +56,19 @@
       }
       .brand { display: flex; align-items: center; min-width: 0; }
       .brand-mark {
-        width: 50px; height: 34px; margin-right: 10px; border: 1px solid var(--gold);
-        color: var(--primary); display: grid; place-items: center; font-family: Georgia, serif;
-        font-size: 17px; letter-spacing: 1px;
+        width: 58px; height: 42px; margin-right: 10px; border: 0;
+        display: grid; place-items: center; overflow: hidden;
       }
-      .shop-name { font-size: 19px; letter-spacing: 1.3px; font-weight: 650; white-space: nowrap; }
+      .brand-mark img { width: 100%; height: 100%; object-fit: contain; display: block; }
+      .shop-name { font-size: 19px; letter-spacing: 2px; font-weight: 750; white-space: nowrap; text-transform: uppercase; color: var(--primary-strong); }
       .tagline { margin-top: 3px; color: var(--muted); font-size: 10px; letter-spacing: .3px; }
       .top-actions { display: flex; gap: 8px; }
       .icon-button {
         width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 50%;
         color: var(--primary); background: var(--card); display: grid; place-items: center;
       }
+      .ui-icon { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+      .button-icon { width: 15px; height: 15px; flex: 0 0 15px; }
       .hero {
         min-height: 150px; margin: 16px; padding: 22px 20px; border-radius: 22px;
         background: var(--mint); display: flex; align-items: center; justify-content: space-between;
@@ -87,7 +89,8 @@
         min-width: 292px; min-height: 106px; border: 1px solid var(--border); border-radius: 17px;
         background: var(--card); display: flex; overflow: hidden;
       }
-      .banner-art { width: 100px; background: var(--mint-deep); display: grid; place-items: center; color: var(--gold); font-size: 32px; }
+      .banner-art { width: 100px; min-width: 100px; height: 106px; padding: 8px; background: var(--mint-deep); display: grid; place-items: center; color: var(--gold); font-size: 32px; }
+      .banner-art img { width: 100%; height: 100%; object-fit: contain; display: block; }
       .banner-copy { padding: 15px 12px; display: flex; flex-direction: column; justify-content: center; }
       .banner-copy strong { font-size: 14px; }
       .banner-copy span { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.45; }
@@ -109,7 +112,7 @@
         background: var(--card); box-shadow: 0 4px 14px rgba(43, 91, 82, .03);
       }
       .image-frame { height: 196px; position: relative; background: var(--mint); display: grid; place-items: center; }
-      .photo { width: 100%; height: 100%; object-fit: contain; display: block; }
+      .photo { width: 100%; height: 100%; padding: 12px; object-fit: contain; display: block; }
       .no-photo { color: var(--gold); font-family: Georgia, serif; font-size: 48px; }
       .heart {
         position: absolute; z-index: 1; top: 10px; left: 10px; width: 32px; height: 32px;
@@ -129,6 +132,7 @@
       .ask {
         width: 100%; margin-top: 10px; padding: 9px 8px; border: 0; border-radius: 12px;
         background: var(--whatsapp); color: #fff; font-size: 12px; font-weight: 700;
+        display: inline-flex; align-items: center; justify-content: center; gap: 7px;
       }
       .empty {
         margin: 18px; padding: 26px; border-radius: 18px; background: var(--mint); text-align: center;
@@ -178,15 +182,16 @@
         background: var(--primary); color: #fff; font-size: 13px; font-weight: 750;
       }
       .disclaimer { margin: 10px 0 0; color: var(--muted); text-align: center; font-size: 10px; line-height: 1.5; }
-      .quality { margin-top: 28px; padding: 24px 20px; border-top: 1px solid var(--border); text-align: center; }
+      .quality { margin-top: 20px; padding: 14px 20px; border-top: 1px solid var(--border); text-align: center; }
       .quality .seal {
-        width: 80px; height: 64px; margin: 12px auto 0; border: 1px solid var(--gold); border-radius: 50%;
-        display: grid; place-items: center; color: var(--primary); font-family: Georgia, serif; font-size: 18px;
+        width: 140px; height: 112px; margin: 6px auto 0;
+        display: grid; place-items: center;
       }
-      .quality h3 { margin: 4px 0 0; font-size: 16px; }
-      .quality p { margin: 4px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
+      .quality .seal img { width: 100%; height: 100%; object-fit: contain; display: block; filter: brightness(0.93) contrast(1.06); }
+      .quality h3 { margin: 2px 0 0; font-size: 16px; font-weight: 750; letter-spacing: 0.8px; }
+      .quality p { margin: 2px 0 0; color: var(--muted); font-size: 11px; line-height: 1.45; }
       footer { margin: 28px 18px 0; padding-top: 22px; border-top: 1px solid var(--border); text-align: center; }
-      footer h2 { margin: 0; font-size: 18px; letter-spacing: 1px; }
+      footer h2 { margin: 0; font-size: 20px; letter-spacing: 2.5px; font-weight: 800; text-transform: uppercase; color: var(--primary-strong); }
       footer p { margin: 6px 0 0; color: var(--muted); font-size: 12px; }
       .footer-actions { display: flex; justify-content: center; gap: 10px; margin-top: 16px; }
       .footer-actions button { min-width: 122px; padding: 9px 15px; border-radius: 19px; font-size: 12px; font-weight: 650; }
@@ -203,10 +208,20 @@
       }
       .handle { width: 42px; height: 4px; margin: 0 auto 14px; border-radius: 2px; background: #c7d8d3; }
       .detail-image { height: 250px; border-radius: 20px; background: var(--mint); display: grid; place-items: center; overflow: hidden; }
-      .detail-image img { width: 100%; height: 100%; object-fit: contain; }
+      .detail-image img { width: 100%; height: 100%; padding: 18px; object-fit: contain; }
+      .detail-thumbs { display: flex; gap: 8px; padding: 10px 0 2px; overflow-x: auto; }
+      .detail-thumb-button { padding: 0; border: 0; border-radius: 10px; background: transparent; }
+      .detail-thumb { width: 58px; height: 58px; padding: 0; border: 2px solid var(--border); border-radius: 10px; background: var(--mint); object-fit: contain; }
+      .detail-thumb.active { border-color: var(--primary); }
       .detail-category { margin-top: 18px; color: var(--primary); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: 650; }
       .detail-title { margin: 5px 0 0; font-size: 24px; }
       .detail-value { margin: 8px 0 0; font-size: 22px; font-weight: 750; }
+      .detail-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin-top: 16px; }
+      .detail-cell { min-height: 58px; padding: 10px; border-radius: 12px; background: var(--mint); }
+      .detail-cell small { display: block; color: var(--muted); font-size: 10px; }
+      .detail-cell strong { display: block; margin-top: 5px; font-size: 13px; }
+      .detail-notes { margin: 16px 0 0; color: var(--muted); font-size: 13px; line-height: 1.55; }
+      .action-label { display: inline-flex; align-items: center; gap: 7px; }
       .close { width: 100%; margin-top: 8px; padding: 13px; border: 0; background: transparent; color: var(--muted); }
       .status { margin: 0 18px; color: var(--muted); font-size: 12px; text-align: center; }
       @media (min-width: 720px) {
@@ -224,25 +239,31 @@
     <main class="page">
       <header class="topbar">
         <div class="brand">
-          <div class="brand-mark" aria-label="Anmol Jewelers">AJ</div>
+          <div class="brand-mark" aria-label="Anmol Jewelers">
+            <img src="assets/images/anmol_logo_transparent.png" alt="Anmol Jewelers logo" />
+          </div>
           <div>
             <div class="shop-name" id="shop-name">Anmol Jewelers</div>
-            <div class="tagline">Fine jewellery · thoughtfully chosen</div>
+            <div class="tagline">Gold · Silver · Diamond</div>
           </div>
         </div>
         <div class="top-actions">
-          <button class="icon-button" type="button" id="share-button" aria-label="Share catalogue">↗</button>
-          <button class="icon-button" type="button" id="instagram-button" aria-label="Open Instagram" hidden>◎</button>
+          <button class="icon-button" type="button" id="share-button" aria-label="Share catalogue">
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="19" r="2.5"></circle><path d="m8.3 10.8 7.4-4.4M8.3 13.2l7.4 4.4"></path></svg>
+          </button>
+          <button class="icon-button" type="button" id="instagram-button" aria-label="Open Instagram" hidden>
+            <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.7" r="1"></circle></svg>
+          </button>
         </div>
       </header>
 
       <section class="hero">
         <div>
           <div class="eyebrow">ANMOL JEWELERS</div>
-          <h1>Pure white catalogue</h1>
-          <p class="hero-sub">Explore every detail before you visit us.</p>
+          <h1>Jewellery Catalogue</h1>
+          <p class="hero-sub">Browse our latest collection before you visit us.</p>
         </div>
-        <div class="hero-badge">✦<br />Curated<br />collection</div>
+        <div class="hero-badge">✦<br />Anmol</div>
       </section>
 
       <div id="banners" class="banner-row" hidden></div>
@@ -252,9 +273,8 @@
         <div class="section-heading">
           <div>
             <h2>Our collection</h2>
-            <p id="collection-count">0 designs · Pure white catalogue</p>
+            <p id="collection-count">0 designs</p>
           </div>
-          <div class="section-accent">Anmol</div>
         </div>
         <div id="products" class="grid"></div>
         <div id="empty" class="empty" hidden>
@@ -267,7 +287,9 @@
 
       <section class="old-gold">
         <div class="old-header">
-          <div class="calc-icon">⌘</div>
+            <div class="calc-icon">
+              <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2"></rect><path d="M8 7h8M8 11h2M14 11h2M8 15h2M14 15h2M8 18h8"></path></svg>
+            </div>
           <div>
             <h2>Sell Old Gold</h2>
             <p>Instant estimate · transparent rate</p>
@@ -296,25 +318,34 @@
             <span class="estimate-label">Estimated value</span>
             <span class="estimate-value" id="estimate-value">₹0</span>
           </div>
-          <button class="whatsapp" type="button" id="old-gold-button">◉ &nbsp; Get best price on WhatsApp</button>
+          <button class="whatsapp" type="button" id="old-gold-button">
+            <span class="action-label"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"></path><path d="M9 8.5c.3 1.5 1.3 3 2.8 4s2.7 1.2 3.7.7l.8-1.1-2-1.1-.8.8c-.6-.2-1.5-1-1.8-1.6l.6-.8-1.1-1.9-1.2.4Z"></path></svg>Get price on WhatsApp</span>
+          </button>
           <p class="disclaimer">Final value subject to physical verification at store</p>
         </div>
       </section>
 
       <section class="quality">
         <div class="section-label">CERTIFIED QUALITY</div>
-        <div class="seal">BIS</div>
+        <div class="seal">
+          <img src="assets/images/bis-logo.png" alt="BIS hallmark logo" />
+        </div>
         <h3>BIS Hallmark Certified</h3>
         <p>All jewellery certified by<br />Bureau of Indian Standards</p>
       </section>
 
       <footer>
         <h2 id="footer-name">Anmol Jewelers</h2>
+        <p id="footer-owner"></p>
         <p id="footer-address"></p>
         <p id="footer-phone"></p>
         <div class="footer-actions">
-          <button class="footer-wa" type="button" id="footer-wa">◉ &nbsp; WhatsApp</button>
-          <button class="footer-ig" type="button" id="footer-ig" hidden>◎ &nbsp; Instagram</button>
+          <button class="footer-wa" type="button" id="footer-wa">
+            <span class="action-label"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"></path><path d="M9 8.5c.3 1.5 1.3 3 2.8 4s2.7 1.2 3.7.7l.8-1.1-2-1.1-.8.8c-.6-.2-1.5-1-1.8-1.6l.6-.8-1.1-1.9-1.2.4Z"></path></svg>WhatsApp</span>
+          </button>
+          <button class="footer-ig" type="button" id="footer-ig" hidden>
+            <span class="action-label"><svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.7" r="1"></circle></svg>Instagram</span>
+          </button>
         </div>
       </footer>
     </main>
@@ -323,25 +354,41 @@
       <div class="modal-sheet">
         <div class="handle"></div>
         <div class="detail-image" id="detail-image"></div>
+        <div class="detail-thumbs" id="detail-thumbs"></div>
         <div class="detail-category" id="detail-category"></div>
         <h2 class="detail-title" id="detail-title"></h2>
         <div class="detail-value" id="detail-value"></div>
-        <button class="ask" type="button" id="detail-wa">◉ &nbsp; Enquire on WhatsApp</button>
+        <div class="detail-grid" id="detail-grid"></div>
+        <p class="detail-notes" id="detail-notes" hidden></p>
+        <button class="ask" type="button" id="detail-wa">
+          <svg class="ui-icon button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"></path><path d="M9 8.5c.3 1.5 1.3 3 2.8 4s2.7 1.2 3.7.7l.8-1.1-2-1.1-.8.8c-.6-.2-1.5-1-1.8-1.6l.6-.8-1.1-1.9-1.2.4Z"></path></svg>
+          <span>Enquire on WhatsApp</span>
+        </button>
         <button class="close" type="button" id="close-modal">Close</button>
       </div>
     </div>
 
     <script>
       (() => {
-        const API_URL = '/api/live-catalog';
+          const API_URL = '/api/live-catalog';
+          const DEFAULT_SHOP = 'Anmol Jewelers';
+          const DEFAULT_OWNER = 'Rajesh';
+          const DEFAULT_PHONE = '9480405764';
+          const DEFAULT_ADDRESS = '#172 Nelagadaran Halli, Nagasandra Post, Bangalore 560073';
+          const INSTAGRAM_URL = 'https://www.instagram.com/anmol_jeweler?igsh=ZThxazRuYWMybWYz';
         const fallbackCatalog = {
-          shopName: 'Anmol Jewelers',
+            shopName: DEFAULT_SHOP,
+            ownerName: DEFAULT_OWNER,
+            phone: DEFAULT_PHONE,
+            address: DEFAULT_ADDRESS,
+            instagramUrl: INSTAGRAM_URL,
           categories: [],
           items: [],
           metalRates: {},
         };
         let catalog = fallbackCatalog;
         let activePurity = '22K • 916';
+        let activeCategoryId = 'all';
         let selectedItem = null;
         const favorites = new Set();
         const purityOptions = [
@@ -364,13 +411,17 @@
           return digits.length === 10 ? `91${digits}` : digits;
         };
         const openWhatsApp = (message) => {
-          const number = phoneDigits(catalog.phone || catalog.whatsappNumber);
+          const number = phoneDigits(catalog.phone || catalog.whatsappNumber || DEFAULT_PHONE);
           const url = number
             ? `https://wa.me/${number}?text=${encodeURIComponent(message)}`
             : `https://wa.me/?text=${encodeURIComponent(message)}`;
           window.open(url, '_blank', 'noopener,noreferrer');
         };
-        const itemPhotos = (item) => Array.isArray(item.photoUrls) ? item.photoUrls : [];
+        const itemPhotos = (item) => {
+          if (Array.isArray(item.photoUrls)) return item.photoUrls;
+          if (Array.isArray(item.photoUris)) return item.photoUris;
+          return item.photoUri ? [item.photoUri] : [];
+        };
         const categoryName = (item) => {
           const category = (catalog.categories || []).find((entry) => entry.id === item.categoryId);
           return category?.name || 'Jewellery';
@@ -383,12 +434,13 @@
         };
 
         function renderHeader() {
-          const name = catalog.shopName || 'Anmol Jewelers';
+          const name = catalog.shopName || DEFAULT_SHOP;
           $('shop-name').textContent = name;
           $('footer-name').textContent = name;
-          $('footer-address').textContent = [catalog.address, catalog.city, catalog.pincode].filter(Boolean).join(', ');
-          $('footer-phone').textContent = catalog.phone || catalog.whatsappNumber || '';
-          const instagram = catalog.instagramUrl;
+          $('footer-owner').textContent = DEFAULT_OWNER;
+          $('footer-address').textContent = DEFAULT_ADDRESS;
+          $('footer-phone').textContent = DEFAULT_PHONE;
+          const instagram = INSTAGRAM_URL;
           $('instagram-button').hidden = !instagram;
           $('footer-ig').hidden = !instagram;
           if (instagram) {
@@ -407,7 +459,16 @@
             card.className = 'banner';
             const art = document.createElement('div');
             art.className = 'banner-art';
-            art.textContent = '✦';
+            if (banner.imageUri) {
+              const image = document.createElement('img');
+              image.src = banner.imageUri;
+              image.alt = banner.title || 'Catalogue banner';
+              image.loading = 'lazy';
+              image.onerror = () => { image.remove(); art.textContent = '✦'; };
+              art.append(image);
+            } else {
+              art.textContent = '✦';
+            }
             const copy = document.createElement('div');
             copy.className = 'banner-copy';
             copy.innerHTML = `<strong>${escapeText(banner.title)}</strong><span>${escapeText(banner.subtitle)}</span><b>${escapeText(banner.offerText)}</b>`;
@@ -420,15 +481,25 @@
           const node = $('categories');
           node.replaceChildren();
           const all = document.createElement('button');
-          all.className = 'pill active';
+          all.className = `pill${activeCategoryId === 'all' ? ' active' : ''}`;
           all.textContent = 'All Jewellery';
           all.type = 'button';
+          all.onclick = () => {
+            activeCategoryId = 'all';
+            renderCategories();
+            renderProducts();
+          };
           node.append(all);
           (catalog.categories || []).slice(0, 3).forEach((category) => {
             const pill = document.createElement('button');
-            pill.className = 'pill';
+            pill.className = `pill${activeCategoryId === category.id ? ' active' : ''}`;
             pill.textContent = category.name;
             pill.type = 'button';
+            pill.onclick = () => {
+              activeCategoryId = category.id;
+              renderCategories();
+              renderProducts();
+            };
             node.append(pill);
           });
         }
@@ -436,8 +507,11 @@
         function renderProducts() {
           const node = $('products');
           node.replaceChildren();
-          const items = Array.isArray(catalog.items) ? catalog.items : [];
-          $('collection-count').textContent = `${items.length} designs · Pure white catalogue`;
+          const allItems = Array.isArray(catalog.items) ? catalog.items : [];
+          const items = activeCategoryId === 'all'
+            ? allItems
+            : allItems.filter((item) => item.categoryId === activeCategoryId);
+          $('collection-count').textContent = `${items.length} designs`;
           $('empty').hidden = items.length > 0;
           items.forEach((item) => {
             const card = document.createElement('article');
@@ -470,10 +544,6 @@
               placeholder.textContent = '✧';
               frame.append(placeholder);
             }
-            const express = document.createElement('span');
-            express.className = 'express';
-            express.textContent = 'Express';
-            frame.append(express);
             card.append(frame);
             const body = document.createElement('div');
             body.className = 'card-body';
@@ -481,10 +551,10 @@
             const ask = document.createElement('button');
             ask.className = 'ask';
             ask.type = 'button';
-            ask.textContent = '◉  WhatsApp par poochhen';
+            ask.innerHTML = `<svg class="ui-icon button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11.5a8 8 0 0 1-11.8 7L4 20l1.5-4.1A8 8 0 1 1 20 11.5Z"></path><path d="M9 8.5c.3 1.5 1.3 3 2.8 4s2.7 1.2 3.7.7l.8-1.1-2-1.1-.8.8c-.6-.2-1.5-1-1.8-1.6l.6-.8-1.1-1.9-1.2.4Z"></path></svg><span>WhatsApp enquiry</span>`;
             ask.onclick = (event) => {
               event.stopPropagation();
-              openWhatsApp(`Namaste! *${catalog.shopName || 'Anmol Jewelers'}* — mujhe "${item.name || 'jewellery item'}" ke baare me jaankari chahiye. (Catalogue se)`);
+              openWhatsApp(`Namaste! *${catalog.shopName || DEFAULT_SHOP}* — mujhe "${item.name || 'jewellery item'}" ke baare me jaankari chahiye. (Catalogue se)`);
             };
             body.append(ask);
             card.append(body);
@@ -497,6 +567,7 @@
           const rates = catalog.metalRates || {};
           return Number(rates[option.key] || 0) || Math.round((Number(rates.goldRate999) || 0) * option.purity / 999);
         }
+        
 
         function renderCalculator() {
           const rates = catalog.metalRates || {};
@@ -526,7 +597,7 @@
           $('old-gold-button').onclick = () => {
             const value = $('weight').value || 'To be confirmed';
             const estimate = Number(value) > 0 ? money(Number(value) * oldRate) : 'To be confirmed';
-            openWhatsApp(`Hello ${catalog.shopName || 'Anmol Jewelers'}, I want to sell old gold.\nPurity: ${activePurity}\nNet weight: ${value} g\nOld gold rate: ${money(oldRate)}/g\nEstimated value: ${estimate}\n\nFinal value will be confirmed after physical verification.`);
+            openWhatsApp(`Hello ${catalog.shopName || DEFAULT_SHOP}, I want to sell old gold.\nPurity: ${activePurity}\nNet weight: ${value} g\nOld gold rate: ${money(oldRate)}/g\nEstimated value: ${estimate}\n\nFinal value will be confirmed after physical verification.`);
           };
         }
 
@@ -536,21 +607,68 @@
           $('estimate-value').textContent = money(value * oldRate);
         }
 
+        function renderDetailPhoto(image) {
+          const container = $('detail-image');
+          container.replaceChildren();
+          if (!image) {
+            container.textContent = '✧';
+            return;
+          }
+          const node = document.createElement('img');
+          node.src = image;
+          node.alt = selectedItem?.name || 'Jewellery item';
+          node.onerror = () => { container.textContent = '✧'; };
+          container.append(node);
+        }
+
         function openDetail(item) {
           selectedItem = item;
-          const image = itemPhotos(item)[0];
-          $('detail-image').replaceChildren();
-          if (image) {
-            const node = document.createElement('img');
-            node.src = image;
-            node.alt = item.name || 'Jewellery item';
-            $('detail-image').append(node);
-          } else {
-            $('detail-image').textContent = '✧';
-          }
+          const photos = itemPhotos(item);
+          renderDetailPhoto(photos[0]);
+          const thumbs = $('detail-thumbs');
+          thumbs.replaceChildren();
+          photos.forEach((photo, index) => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'detail-thumb-button';
+            button.setAttribute('aria-label', `View photo ${index + 1}`);
+            const thumb = document.createElement('img');
+            thumb.className = `detail-thumb${index === 0 ? ' active' : ''}`;
+            thumb.src = photo;
+            thumb.alt = `${item.name || 'Jewellery item'} photo ${index + 1}`;
+            thumb.loading = 'lazy';
+            button.onclick = () => {
+              renderDetailPhoto(photo);
+              thumbs.querySelectorAll('.detail-thumb').forEach((entry) => entry.classList.remove('active'));
+              thumb.classList.add('active');
+            };
+            button.append(thumb);
+            thumbs.append(button);
+          });
+          thumbs.hidden = photos.length < 2;
           $('detail-category').textContent = categoryName(item);
           $('detail-title').textContent = item.name || 'Jewellery item';
           $('detail-value').textContent = money(item.approxPrice || calculateItemValue(item));
+          const rate = Number(item.manualRate ?? item.ratePerGram ?? 0);
+          const detailRows = [
+            ['Purity', item.purity || '—'],
+            ['Rate / gram', rate > 0 ? money(rate) : '—'],
+            ['Gross weight', weight(item.grossWeight)],
+            ['Net weight', weight(item.netWeight ?? item.weight)],
+            ['Making', `${Number(item.makingChargePercent || 0)}%`],
+            ['Wastage', `${Number(item.wastagePercent || 0)}%`],
+          ];
+          const detailGrid = $('detail-grid');
+          detailGrid.replaceChildren();
+          detailRows.forEach(([label, value]) => {
+            const cell = document.createElement('div');
+            cell.className = 'detail-cell';
+            cell.innerHTML = `<small>${escapeText(label)}</small><strong>${escapeText(value || '—')}</strong>`;
+            detailGrid.append(cell);
+          });
+          const notes = $('detail-notes');
+          notes.textContent = item.notes || '';
+          notes.hidden = !item.notes;
           $('modal').classList.add('open');
           $('detail-wa').onclick = () => openWhatsApp(`Namaste! I want details for ${item.name || 'this jewellery item'}.`);
         }
@@ -577,12 +695,19 @@
           const option = purityOptions.find((entry) => entry.label === activePurity) || purityOptions[0];
           updateEstimate(Math.round(getRate(option) * (1 - (Number(catalog.oldGoldDeductionPercent) || 2) / 100)));
         });
-        $('share-button').onclick = () => {
-          const text = `${catalog.shopName || 'Anmol Jewelers'} catalogue\n${window.location.href}`;
-          if (navigator.share) navigator.share({ title: `${catalog.shopName || 'Anmol Jewelers'} Catalogue`, text });
-          else navigator.clipboard?.writeText(window.location.href);
+        $('share-button').onclick = async () => {
+          const url = window.location.href;
+          const text = `${catalog.shopName || DEFAULT_SHOP} catalogue\n${url}`;
+          if (navigator.share) {
+            try { await navigator.share({ title: `${catalog.shopName || DEFAULT_SHOP} Catalogue`, text, url }); return; }
+            catch (err) { if (err && err.name === 'AbortError') return; }
+          }
+          try {
+            if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(url); alert('Catalogue link copy ho gaya!'); }
+            else { window.prompt('Link copy kar lijiye:', url); }
+          } catch (err) { window.prompt('Link copy kar lijiye:', url); }
         };
-        $('footer-wa').onclick = () => openWhatsApp(`Hello ${catalog.shopName || 'Anmol Jewelers'}, I saw your jewellery catalogue.`);
+        $('footer-wa').onclick = () => openWhatsApp(`Hello ${catalog.shopName || DEFAULT_SHOP}, I saw your jewellery catalogue.`);
         $('close-modal').onclick = () => $('modal').classList.remove('open');
         $('modal').onclick = (event) => { if (event.target === $('modal')) $('modal').classList.remove('open'); };
         loadCatalog();
