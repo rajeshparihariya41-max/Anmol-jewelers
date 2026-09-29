@@ -67,6 +67,10 @@
         width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 50%;
         color: var(--primary); background: var(--card); display: grid; place-items: center;
       }
+      .live-link {
+        min-height: 38px; padding: 0 13px; border: 0; border-radius: 19px;
+        color: #fff; background: var(--primary); font-size: 11px; font-weight: 750;
+      }
       .ui-icon { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
       .button-icon { width: 15px; height: 15px; flex: 0 0 15px; }
       .hero {
@@ -251,6 +255,7 @@
           <button class="icon-button" type="button" id="share-button" aria-label="Share catalogue">
             <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5" r="2.5"></circle><circle cx="6" cy="12" r="2.5"></circle><circle cx="18" cy="19" r="2.5"></circle><path d="m8.3 10.8 7.4-4.4M8.3 13.2l7.4 4.4"></path></svg>
           </button>
+          <button class="live-link" type="button" id="live-button" aria-label="Open live catalogue">Live link</button>
           <button class="icon-button" type="button" id="instagram-button" aria-label="Open Instagram" hidden>
             <svg class="ui-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.7" r="1"></circle></svg>
           </button>
@@ -695,18 +700,23 @@
           const option = purityOptions.find((entry) => entry.label === activePurity) || purityOptions[0];
           updateEstimate(Math.round(getRate(option) * (1 - (Number(catalog.oldGoldDeductionPercent) || 2) / 100)));
         });
-        $('share-button').onclick = async () => {
-          const url = window.location.href;
-          const text = `${catalog.shopName || DEFAULT_SHOP} catalogue\n${url}`;
-          if (navigator.share) {
-            try { await navigator.share({ title: `${catalog.shopName || DEFAULT_SHOP} Catalogue`, text, url }); return; }
-            catch (err) { if (err && err.name === 'AbortError') return; }
-          }
+        const openLiveLink = async () => {
+          const url = new URL('/', window.location.origin).href;
           try {
-            if (navigator.clipboard && window.isSecureContext) { await navigator.clipboard.writeText(url); alert('Catalogue link copy ho gaya!'); }
-            else { window.prompt('Link copy kar lijiye:', url); }
-          } catch (err) { window.prompt('Link copy kar lijiye:', url); }
+            if (navigator.clipboard && window.isSecureContext) {
+              await navigator.clipboard.writeText(url);
+              alert(`Live catalogue link copy ho gaya!\n\n${url}`);
+            } else {
+              window.prompt('Live catalogue link:', url);
+            }
+          } catch (err) {
+            window.prompt('Live catalogue link:', url);
+          }
+          const opened = window.open(url, '_blank', 'noopener,noreferrer');
+          if (!opened) window.location.assign(url);
         };
+        $('share-button').onclick = openLiveLink;
+        $('live-button').onclick = openLiveLink;
         $('footer-wa').onclick = () => openWhatsApp(`Hello ${catalog.shopName || DEFAULT_SHOP}, I saw your jewellery catalogue.`);
         $('close-modal').onclick = () => $('modal').classList.remove('open');
         $('modal').onclick = (event) => { if (event.target === $('modal')) $('modal').classList.remove('open'); };
