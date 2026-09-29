@@ -45,61 +45,14 @@ async function readPublishedCatalog() {
   return await response.json();
 }
 
-async function readPhotoCatalog() {
-  const result = await cloudinary.api.resources({
-    resource_type: "image",
-    type: "upload",
-    prefix: photoFolder,
-    max_results: 500,
-    context: true,
-    tags: true,
-    metadata: true,
-  });
-
-  const categories = new Map();
-  const items = [];
-
-  for (const resource of result.resources || []) {
-    if (!resource.secure_url) continue;
-    const custom = resource.context?.custom || {};
-    const category = clean(custom.category || custom.categoryName) || "Jewellery";
-    const categoryId = clean(custom.categoryId) || category.toLowerCase().replace(/\s+/g, "-");
-    const name =
-      clean(custom.name || custom.title || custom.productName) ||
-      resource.public_id?.split("/").pop()?.replace(/[-_]+/g, " ") ||
-      "Jewellery item";
-
-    if (!categories.has(categoryId)) categories.set(categoryId, { id: categoryId, name: category });
-    items.push({
-      id: clean(custom.productId || custom.sku) || resource.public_id,
-      name,
-      categoryId,
-      photoUrls: [resource.secure_url],
-      ...(clean(custom.purity) ? { purity: custom.purity } : {}),
-      ...(clean(custom.notes || custom.description)
-        ? { notes: custom.notes || custom.description }
-        : {}),
-      ...(numberValue(custom.approxPrice || custom.price)
-        ? { approxPrice: numberValue(custom.approxPrice || custom.price) }
-        : {}),
-      ...(numberValue(custom.netWeight || custom.weight)
-        ? { netWeight: numberValue(custom.netWeight || custom.weight) }
-        : {}),
-    });
-  }
-
-  return {
-    ...fallbackCatalog,
-    categories: Array.from(categories.values()),
-    items,
-    updatedAt: new Date().toISOString(),
-  };
-}
-
 async function getCatalog() {
-  const published = await readPublishedCatalog();
-  if (published) return published.catalog || published;
-  return await readPhotoCatalog();
+  try {
+    const published = await readPublishedCatalog();
+    if (published) return published.catalog || published;
+  } catch {
+    // A missing live JSON should show the catalogue shell, not a server error.
+  }
+  return fallbackCatalog;
 }
 
 export default async function handler(req, res) {
